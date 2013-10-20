@@ -23,7 +23,5 @@ angular.module('fivefifteenApp')
 
   // scope data is not persistent across views so we use a simple service.
   .factory('Data', function (dateFilter) {
-    return {
-      initTime: new Date()
-    };
+    return {};
   });
