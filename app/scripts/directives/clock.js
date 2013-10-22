@@ -33,5 +33,5 @@ angular.module('fivefifteenApp.directives', [])
       });
  
       updateLater(); // kick off the UI update process.
-    }
+    };
   });
