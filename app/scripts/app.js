@@ -35,6 +35,10 @@ angular.module('fivefifteenApp', ['fivefifteenApp.directives', 'fivefifteenApp.f
         templateUrl: 'views/preview.html',
         controller: 'MainCtrl'
       })
+      .when('/preview-md', {
+        templateUrl: 'views/preview-md.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
