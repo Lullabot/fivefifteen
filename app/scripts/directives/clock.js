@@ -1,9 +1,11 @@
+'use strict'
+
 angular.module('fivefifteenApp.directives', [])
   .directive('clock', function ($timeout, Data) {
     return function (scope, element, attrs) {
       var timeoutId; // timeoutId, so that we can cancel the time updates
       if (!Data.initTime) {
-        Data.initTime = new Date();  
+        Data.initTime = new Date();
       }
       var init = Data.initTime;
       
