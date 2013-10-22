@@ -1,16 +1,18 @@
+'use strict';
+
 angular.module('fivefifteenApp.directives', [])
-  .directive('clock', function ($timeout, dateFilter, Data) {
-    return function (scope, element, attrs) {
+  .directive('clock', function ($timeout, Data) {
+    return function (scope, element) {
       var timeoutId; // timeoutId, so that we can cancel the time updates
       if (!Data.initTime) {
-        Data.initTime = new Date();  
+        Data.initTime = new Date();
       }
       var init = Data.initTime;
       
       var current = new Date();
       var elapsed = new Date();
       elapsed.setTime(current.getTime() - init.getTime());
-      element.text("Minute/s elapsed: " + elapsed.getMinutes());
+      element.text('Minute/s elapsed: ' + elapsed.getMinutes());
       
       // schedule update in one second
       function updateLater() {
@@ -19,7 +21,7 @@ angular.module('fivefifteenApp.directives', [])
           var current = new Date();
           var elapsed = new Date();
           elapsed.setTime(current.getTime() - init.getTime());
-          element.text("Minute/s elapsed: " + elapsed.getMinutes());
+          element.text('Minute/s elapsed: ' + elapsed.getMinutes());
           updateLater(); // schedule another update
         }, 1000);
       }
@@ -31,5 +33,5 @@ angular.module('fivefifteenApp.directives', [])
       });
  
       updateLater(); // kick off the UI update process.
-    }
+    };
   });
