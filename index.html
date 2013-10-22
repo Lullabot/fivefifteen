@@ -11,7 +11,10 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="styles/6bde0ca4.main.css">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
   </head>
   <body ng-app="fivefifteenApp">
     <!--[if lt IE 7]>
@@ -24,22 +27,32 @@
     <![endif]-->
     
     <div class="container">
-      <div class="page-header"><h1><a href="#/">5:15</a> <small>&mdash; 5 minutes to read, 15 minutes to write</small></h1></div>
+      <div class='page-header'><h1><a href="#/">5:15</a> <small>&mdash; 5 minutes to read, 15 minutes to write</small></h1></div>
     </div>
     
     <!-- Add your site or application content here -->
     <div class="container" ng-view="" ng-model="data"></div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
 
-    <script src="scripts/6b865daa.modules.js"></script>
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <!-- endbuild -->
 
-    <script src="scripts/4806f5f4.scripts.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/marked.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/filters/md.js"></script>
+    <script src="scripts/directives/clock.js"></script>
+    <!-- endbuild -->
 
     <script type="text/javascript">
     // Remember to set this to true before deployment. It's just annoying during development.
-    var ask = false; 
+    var ask = true; 
     $(window).bind('beforeunload', function(){
       if (ask) {
         return 'If you have any unsaved data in the current page, it will be lost.';  
