@@ -12,7 +12,7 @@ angular.module('fivefifteenApp.directives', [])
       var current = new Date();
       var elapsed = new Date();
       elapsed.setTime(current.getTime() - init.getTime());
-      element.text("Minute/s elapsed: " + elapsed.getMinutes());
+      element.text('Minute/s elapsed: ' + elapsed.getMinutes());
       
       // schedule update in one second
       function updateLater() {
@@ -21,7 +21,7 @@ angular.module('fivefifteenApp.directives', [])
           var current = new Date();
           var elapsed = new Date();
           elapsed.setTime(current.getTime() - init.getTime());
-          element.text("Minute/s elapsed: " + elapsed.getMinutes());
+          element.text('Minute/s elapsed: ' + elapsed.getMinutes());
           updateLater(); // schedule another update
         }, 1000);
       }
