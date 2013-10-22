@@ -1,5 +1,5 @@
 angular.module('fivefifteenApp.directives', [])
-  .directive('clock', function ($timeout, dateFilter, Data) {
+  .directive('clock', function ($timeout, Data) {
     return function (scope, element, attrs) {
       var timeoutId; // timeoutId, so that we can cancel the time updates
       if (!Data.initTime) {
