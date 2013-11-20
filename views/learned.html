@@ -1,5 +1,8 @@
 <div ng-include="steps.url" ng-init="steps.stop='two'"></div>
-<p><strong>Things I’ve Learned Recently</strong> – Keep in mind both professional AND personal things here. If you've suddenly realized that personal hygene relates to your coworkers and friends, shout it out. Here are some topics to help prime your thinking: Professional might include: InDesign functionality, deepening of a core skill, coding skills evolution, client management wizardry, and other things related to your job role. Personal skills might cover: time management, associate mentorship, social skills, and company culture perspectives.</p>
+
+<p ng-bind-html-unsafe="steps.learned.title | markdown"></p>
+<p ng-bind-html-unsafe="steps.learned.text | markdown"></p>
+
 <div role="form">
   <div class="form-group">
     <textarea class="form-control" name="learned" rows="15" ng-model="data.learned"></textarea>

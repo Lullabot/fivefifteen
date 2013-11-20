@@ -1,5 +1,8 @@
 <div ng-include="steps.url" ng-init="steps.stop='three'"></div>
-<p><strong>Current Challenges</strong> – Everybody has 'em. Talking openly about challenges provides you the opportunity to get direct mentorship (something not to miss) from your manager or mentor and helps to clarify things for them to focus on. Course the goal is that items under “Current Challenges” move up to “Things I’ve Learned Recently.”</p>
+
+<p ng-bind-html-unsafe="steps.challenges.title | markdown"></p>
+<p ng-bind-html-unsafe="steps.challenges.text | markdown"></p>
+
 <div role="form">
   <div class="form-group">
     <textarea class="form-control" name="challenges" rows="15" ng-model="data.challenges"></textarea>
