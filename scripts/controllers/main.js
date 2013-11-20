@@ -54,37 +54,37 @@ angular.module('fivefifteenApp')
       + "\n"
       + steps.success.text
       + "\n\n"
-      + Data.success
+      + [Data.success === 'undefined' ? '' : Data.success]
       + "\n\n"
       + steps.learned.title
       + "\n"
       + steps.learned.text
       + "\n\n"
-      + Data.learned
+      + [Data.learned === 'undefined' ? '' : Data.learned]
       + "\n\n"
       + steps.challenges.title
       + "\n"
       + steps.challenges.text
       + "\n\n"
-      + Data.challenges
+      + [Data.challenges === 'undefined' ? '' : Data.challenges]
       + "\n\n"
       + steps.projects.title
       + "\n"
       + steps.projects.text
       + "\n\n"
-      + Data.projects
+      + [Data.projects === 'undefined' ? '' : Data.projects]
       + "\n\n"
       + steps.objectives.title
       + "\n"
       + steps.objectives.text
       + "\n\n"
-      + Data.objectives
+      + [Data.objectives === 'undefined' ? '' : Data.objectives]
       + "\n\n"
       + steps.feedback.title
       + "\n"
       + steps.feedback.text
       + "\n\n"
-      + Data.feedback
+      + [Data.feedback === 'undefined' ? '' : Data.feedback]
       + "\n\n"
       + "";
   })
