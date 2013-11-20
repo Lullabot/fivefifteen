@@ -1,5 +1,8 @@
 <div ng-include="steps.url" ng-init="steps.stop='six'"></div>
-<p><strong>Feedback for Your Manager</strong> – Time to provide some feedback to your manager. Again, be honest everybody can improve what they do. Honesty is the start.</p>
+
+<p ng-bind-html-unsafe="steps.feedback.title | markdown"></p>
+<p ng-bind-html-unsafe="steps.feedback.text | markdown"></p>
+
 <div role="form">
   <div class="form-group">
     <textarea class="form-control" name="feedback" rows="15" ng-model="data.feedback"></textarea>

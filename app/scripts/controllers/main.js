@@ -6,62 +6,87 @@ angular.module('fivefifteenApp')
     // Simple Data service to persist form values.
     $scope.data = Data;
     
-    // Used to include the steps.html
-    $scope.steps = {
-      stops : [
-        'success',
-        'learned',
-        'challenges',
-        'projects',
-        'objectives',
-        'feedback'
-      ],
+    // This variable holds all of the text used on the site. Please use markdown here.
+    var steps = {
+  
+      'success' : {
+          "title": "## Recent Successes",
+          "text": "> Gloat, it's good for ya. Note even the small successes. It's also very good Karma to mention the team members that helped."
+      },
+
+      'learned' : {
+          'title' : '## Things I’ve Learned Recently',
+          'text' : "> Keep in mind both professional AND personal things here. If you've suddenly realized that personal hygene relates to your coworkers and friends, shout it out. Here are some topics to help prime your thinking: Professional might include: InDesign functionality, deepening of a core skill, coding skills evolution, client management wizardry, and other things related to your job role. Personal skills might cover: time management, associate mentorship, social skills, and company culture perspectives."
+      },
+      
+      'challenges' : {
+          'title' : '## Current Challenges',
+          'text' : "> Everybody has 'em. Talking openly about challenges provides you the opportunity to get direct mentorship (something not to miss) from your manager or mentor and helps to clarify things for them to focus on. Course the goal is that items under “Current Challenges” move up to “Things I’ve Learned Recently.” "
+      },
+
+      'projects' : {
+          'title' : '## Project Updates/Reviews',
+          'text' : "> This is not a postmortem, or chance to sneak a project meeting. This conversation should focus on personal and career development, not status updates. Topics and concepts that come up in the context of projects, but live beyond the context of a specific client. Try answering these questions to get yourself started:"
+                  + "\n\n"
+                      + "* Are your projects on time?\n"
+                      + "* How is your workload?\n"
+                      + "* How goes your collaboration with peers?\n"
+                      + "* Are there unexpected elements to any of your projects?\n"
+      },
+
+      'objectives' : {
+          'title' : '## Annual Development Objectives',
+          'text' : "> Identify skills you would like to develop or opportunities you would like to experience. This may not change very often, but it serves as a reminder to discuss opportunities to develop."
+      },
+
+      'feedback' : {
+          'title' : '## Feedback for Your Manager',
+          'text' : "> Time to provide some feedback to your manager. Again, be honest. Everybody can improve what they do. Honesty is the start."
+      },
+      
       url: 'views/steps.html'
     };
 
+    $scope.steps = steps;
+
     $scope.shebang = ""
-    + "## Recent Successes"
-    + "\n"
-    + "> Gloat, it's good for ya. Note even the small successes. It's also very good Karma to mention the team members that helped."
-    + "\n\n"
-    + Data.success
-    + "\n\n"
-    + "## Things I’ve Learned Recently"
-    + "\n"
-    + "> Keep in mind both professional AND personal things here. If you've suddenly realized that personal hygene relates to your coworkers and friends, shout it out. Here are some topics to help prime your thinking: Professional might include: InDesign functionality, deepening of a core skill, coding skills evolution, client management wizardry, and other things related to your job role. Personal skills might cover: time management, associate mentorship, social skills, and company culture perspectives."
-    + "\n\n"
-    + Data.learned
-    + "\n\n"
-    + "## Current Challenges"
-    + "\n"
-    + "> Everybody has 'em. Talking openly about challenges provides you the opportunity to get direct mentorship (something not to miss) from your manager or mentor and helps to clarify things for them to focus on. Course the goal is that items under “Current Challenges” move up to “Things I’ve Learned Recently.” "
-    + "\n\n"
-    + Data.challenges
-    + "\n\n"
-    + "## Project Updates/Reviews"
-    + "\n"
-    + "> This is not a postmortem, or chance to sneak a project meeting. This conversation should focus on personal and career development, not status updates. Topics and concepts that come up in the context of projects, but live beyond the context of a specific client. Try answering these questions to get yourself started:"
-    + "\n"
-        + "* Are your projects on time?\n"
-        + "* How is your workload?\n"
-        + "* How goes your collaboration with peers?\n"
-        + "* Are there unexpected elements to any of your projects?\n"
-    + "\n\n"
-    + Data.projects
-    + "\n\n"
-    + "## Annual Development Objectives"
-    + "\n"
-    + "> Identify skills you would like to develop or opportunities you would like to experience. This may not change very often, but it serves as a reminder to discuss opportunities to develop."
-    + "\n\n"
-    + Data.objectives
-    + "\n\n"
-    + "## Feedback for Your Manager"
-    + "\n"
-    + "> Time to provide some feedback to your manager. Again, be honest everybody can improve what they do. Honesty is the start."
-    + "\n\n"
-    + Data.feedback
-    + "\n\n"
-    + "";
+      + steps.success.title
+      + "\n"
+      + steps.success.text
+      + "\n\n"
+      + Data.success
+      + "\n\n"
+      + steps.learned.title
+      + "\n"
+      + steps.learned.text
+      + "\n\n"
+      + Data.learned
+      + "\n\n"
+      + steps.challenges.title
+      + "\n"
+      + steps.challenges.text
+      + "\n\n"
+      + Data.challenges
+      + "\n\n"
+      + steps.projects.title
+      + "\n"
+      + steps.projects.text
+      + "\n\n"
+      + Data.projects
+      + "\n\n"
+      + steps.objectives.title
+      + "\n"
+      + steps.objectives.text
+      + "\n\n"
+      + Data.objectives
+      + "\n\n"
+      + steps.feedback.title
+      + "\n"
+      + steps.feedback.text
+      + "\n\n"
+      + Data.feedback
+      + "\n\n"
+      + "";
   })
 
   // scope data is not persistent across views so we use a simple service.
