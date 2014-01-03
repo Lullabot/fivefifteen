@@ -6,10 +6,11 @@ AngularJs app to help with my weekly report.
 
 ## Installing
 
-1. Checkout the master branch
-1. Install yeoman and bower with `npm install -g yo bower`
-1. Install any bower components with `bower install`
-1. Run the app with `grunt serve`
+1. Checkout the master branch.
+1. Install yeoman and bower with `npm install -g yo bower`.
+1. Install any node dependencies with `npm install`.
+1. Install any bower components with `bower install`.
+1. Run the app with `grunt server`.
 
 ## Contributing
 
