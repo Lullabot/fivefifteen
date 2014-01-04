@@ -16,7 +16,7 @@ angular.module('fivefifteenApp')
 
       'learned' : {
           'title' : '## Things I’ve Learned Recently',
-          'text' : "> Keep in mind both professional AND personal things here. If you've suddenly realized that personal hygene relates to your coworkers and friends, shout it out. Here are some topics to help prime your thinking: Professional might include: InDesign functionality, deepening of a core skill, coding skills evolution, client management wizardry, and other things related to your job role. Personal skills might cover: time management, associate mentorship, social skills, and company culture perspectives."
+          'text' : "> Keep in mind both professional AND personal things here. Here are some topics to help prime your thinking: Professional might include: Learned a new project methodology, deepened a core skill, evolved coding prowess, took a Coursera course, or other things related to your job role. Personal skills might cover: time management, associate mentorship, social skills, and company culture perspectives."
       },
       
       'challenges' : {
@@ -26,7 +26,7 @@ angular.module('fivefifteenApp')
 
       'projects' : {
           'title' : '## Project Updates/Reviews',
-          'text' : "> This is not a postmortem, or chance to sneak a project meeting. This conversation should focus on personal and career development, not status updates. Topics and concepts that come up in the context of projects, but live beyond the context of a specific client. Try answering these questions to get yourself started:"
+          'text' : "> This could be a status update on a particular project, or topics and concepts that come up in the context of projects, but live beyond the context of a specific client. Try answering these questions to get yourself started:"
                   + "\n\n"
                       + "* Are your projects on time?\n"
                       + "* How is your workload?\n"
