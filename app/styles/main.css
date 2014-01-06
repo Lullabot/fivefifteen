@@ -126,6 +126,11 @@ h2 {
     height: 25px;
 }
 
+#start {
+  float: right;
+  margin-right: 100px;
+}
+
 .step_one li:first-child {
   background-color: #999;
 }
