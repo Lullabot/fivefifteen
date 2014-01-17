@@ -23,4 +23,5 @@ AngularJs app to help with my weekly report.
 
 ## Build process
 
+1. run `grunt build`
 1. run `grunt gh-pages`
