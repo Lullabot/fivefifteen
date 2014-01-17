@@ -1,71 +1,60 @@
-$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
-
-@import 'sass-bootstrap/lib/bootstrap';
-@import 'partials/layout';
-
 body {
-  background: #fafafa;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
 }
 
 h2 {
-  border-bottom: 1px solid #eee;
-}
-
-.clock {
-  float:right;
-  width: 120px;
-  text-align: center;
+    border-bottom: 1px solid #eee;
 }
 
 .glyphicon-eye-open {
-  margin-right: 15px;
-  font-size: 30px;
-  color: #ccc;
+    margin-right: 15px;
+    font-size: 30px;
+    color: #ccc;
 }
 
 #progress_bar {
-  width: 800px;
-  height: 26px;
-  display: block;
-  background-color: #747474;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: .7em;
-  color: #fff;
-  position: relative;
+    width: 800px;
+    height: 26px;
+    display: block;
+    background-color: #747474;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: .7em;
+    color: #fff;
+    position: relative;
 }
 #progress_bar:before {
-  width: 800px;
-  height: 12px;
-  display: block;
-  background-color: rgba(255, 255, 255, .1);
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  content: '';
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  z-index: 400;
+    width: 800px;
+    height: 12px;
+    display: block;
+    background-color: rgba(255, 255, 255, .1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: '';
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 400;
 }
 #progress_bar:after {
-  display: block;
-  width: 800px;
-  height: 26px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  content: '';
-  -moz-box-shadow: inset 0 0 5px #343434;
-  -webkit-box-shadow: inset 0 0 5px #343434;
-  box-shadow: inset 0 0 5px #343434;
-  z-index: 500;
+    display: block;
+    width: 800px;
+    height: 26px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    content: '';
+    -moz-box-shadow: inset 0 0 5px #343434;
+    -webkit-box-shadow: inset 0 0 5px #343434;
+    box-shadow: inset 0 0 5px #343434;
+    z-index: 500;
 }
 
 #progress_bar li {
@@ -124,16 +113,11 @@ h2 {
   border: none;
 }
 #progress_bar li a {
-  display: inline-block;
-  position: relative;
-  color: inherit;
-  z-index: 600;
-  height: 25px;
-}
-
-#start {
-  float: right;
-  margin-right: 100px;
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    z-index: 600;
+    height: 25px;
 }
 
 .step_one li:first-child {
@@ -209,7 +193,7 @@ h2 {
 }
 
 .step_seven li:nth-child(-n+6) {
-  background-color: #777777;
+    background-color: #777777;   
 }
 .step_seven li:nth-child(-n+6):before {
   border-left: 13px solid #777777 !important;
