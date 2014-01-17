@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fivefifteenApp', ['fivefifteenApp.directives', 'fivefifteenApp.filters', 'firebase'])
+angular.module('fivefifteenApp', ['ngRoute', 'fivefifteenApp.directives', 'fivefifteenApp.filters', 'firebase'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
