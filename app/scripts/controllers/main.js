@@ -19,10 +19,10 @@ angular.module('fivefifteenApp')
 
   .factory('Steps', function($firebase) {
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
-        ref = $firebase(url),
+        promise = $firebase(url),
         factory = { "data": {} };
 
-    ref.$on('loaded', function(values) {
+    promise.$on('loaded', function(values) {
       // If we get values, store it both in the scope and Steps.
       if (typeof values !== "undefined") {
         angular.extend(factory.data, values);
