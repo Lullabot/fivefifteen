@@ -89,6 +89,20 @@ angular.module('fivefifteenApp')
       + "";
   })
 
+  .controller('HeaderCtrl', function ($scope, $location) {
+    // Site Name
+    $scope.siteName = "5:15";
+
+    // Site Tagline
+    $scope.tagLine = "5 minutes to read, 15 minutes to write"
+
+    // App is in progress when you are not on the homepage.
+    $scope.inProgress = function(){
+      if ($location.path() == '/') { return true;} ;
+    };
+
+  })
+
   // scope data is not persistent across views so we use a simple service.
   .factory('Data', function () {
     return {};
