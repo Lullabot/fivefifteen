@@ -16,7 +16,11 @@
 <div class="row">
   <div class="preview">
     <div class="form-group">
-      <textarea class="form-control" name="preview-md" rows="15" ng-model="shebang"></textarea>
+      <div class="results" name="preview-md" rows="15" ng-repeat="step in steps">
+        {{step.title}}<br>
+        {{step.text}}<br>
+        {{data[step.path]}}
+      </div>
       <small><em>Note that all edits here are not persistent.</em></small>
     </div>
   </div>
