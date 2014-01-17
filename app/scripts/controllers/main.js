@@ -98,7 +98,6 @@ angular.module('fivefifteenApp')
 
     // App is in progress when you are not on the homepage.
     $scope.inProgress = function(){
-      console.log($location.path());
       if ($location.path() == '/') { return true;} ;
     };
 
