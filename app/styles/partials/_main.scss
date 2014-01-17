@@ -1,11 +1,15 @@
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+  background: #fafafa;
+  color: #333;
+  padding-bottom: 12rem;
 }
 
 h2 {
-    border-bottom: 1px solid #eee;
+  margin-top: 1em;
+}
+
+h2:first-child {
+  margin-top: 0;
 }
 
 .glyphicon-eye-open {
