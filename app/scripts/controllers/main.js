@@ -89,7 +89,7 @@ angular.module('fivefifteenApp')
       + "";
   })
 
-  .controller('HeaderCtrl', function ($scope, $location, Data) {
+  .controller('HeaderCtrl', function ($scope, $location) {
     // Site Name
     $scope.siteName = "5:15";
 
