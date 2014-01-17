@@ -3,9 +3,17 @@
 angular.module('fivefifteenApp')
   .controller('MainCtrl', function ($scope, Data) {
 
+    // Site Name
+    $scope.siteName = "FiveFifteen";
+
     // Simple Data service to persist form values.
     $scope.data = Data;
+
+    // Admin Contact
+    $scope.admin = "seth@lullabot.com";
     
+    // Define variable for opening email.
+    $scope.sendEmail = function() { sendMail($scope); };
     // This variable holds all of the text used on the site. Please use markdown here.
     var steps = {
   
@@ -107,3 +115,11 @@ angular.module('fivefifteenApp')
   .factory('Data', function () {
     return {};
   });
+
+function sendMail($scope) {
+  var mailTo = $scope.admin;
+  var subject = $scope.siteName;
+  var link = 'mailto:' + mailTo +'?subject=Report from ' + subject;
+
+  window.location.href = link;
+};
