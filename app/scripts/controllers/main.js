@@ -29,7 +29,7 @@ angular.module('fivefifteenApp')
     return {};
   })
 
-  .controller('HeaderCtrl', function ($scope, $location) {
+  .controller('HeaderCtrl', function ($scope, $location, Steps) {
     // Site Name
     $scope.siteName = "5:15";
 
@@ -41,6 +41,7 @@ angular.module('fivefifteenApp')
       if ($location.path() == '/') { return true;} ;
     };
 
+    $scope.state = Steps.state;
   })
 
   .factory('Steps', function($firebase) {
