@@ -1,12 +1,18 @@
-<div class="container" ng-include="'views/steps.html'"></div>
-<p ng-bind-html="state.currentStep.title | markdown"></p>
-<p ng-bind-html="state.currentStep.text | markdown"></p>
+<div class="row">
+  <div ng-include="'views/steps.html'"></div>
+</div>
+<div class="row">
+  <p ng-bind-html="state.currentStep.title | markdown"></p>
+  <p ng-bind-html="state.currentStep.text | markdown"></p>
+</div>
 
-<div role="form">
+<div class="row">
+  <div role="form">
     <div class="form-group">
-        <textarea class="form-control" name="success" rows="15" ng-model="data[state.currentPath]"></textarea>
-        <small><em>Markdown formatting accepted.</em></small>
+      <textarea class="form-control" name="success" rows="15" ng-model="data[state.currentPath]"></textarea>
+      <small><em>Markdown formatting accepted.</em></small>
     </div>
     <a href="#/{{state.nextPath}}" type="button" class="btn btn-primary pull-right">Next</a>
     <a href="#/preview" title="preview" class="glyphicon glyphicon-eye-open pull-right"></a>
+</div>
 </div>
