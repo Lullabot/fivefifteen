@@ -6,12 +6,11 @@ angular.module('fivefifteenApp')
     // Simple Data service to persist form values.
     $scope.data = Data;
 
+    $scope.steps = Steps.data;
+
     if (angular.isDefined($routeParams.stepName)) {
       $scope.path = $routeParams.stepName;
-      $scope.step = Steps.rawData[$scope.path];
     }
-
-    $scope.steps = Steps.data;
   })
 
   // scope data is not persistent across views so we use a simple service.
