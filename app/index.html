@@ -25,8 +25,8 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div class="container">
-      <div class='page-header'><a href="#/success" id="start" type="button" class="btn btn-primary btn-lg">Start</a><h1><a href="#/">5:15</a> <small>&mdash; 5 minutes to read, 15 minutes to write</small></h1>
+    <div class="container" ng-controller="MainCtrl">
+      <div class='page-header'><a href="#/step/{{nextStep}}" id="start" type="button" class="btn btn-primary btn-lg">Start</a><h1><a href="#/">5:15</a> <small>&mdash; 5 minutes to read, 15 minutes to write</small></h1>
 
       </div>
     <!-- Github Ribbon -->

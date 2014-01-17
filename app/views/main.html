@@ -1,3 +1,4 @@
-<div class="overview">
-  <p ng-bind-html-unsafe="shebang | markdown"></p>
+<div class="overview" ng-repeat="step in steps | orderBy:stepNumber">
+  <div ng-bind-html-unsafe="step.title | markdown"></div>
+  <div ng-bind-html-unsafe="step.text | markdown"></div>
 </div>
