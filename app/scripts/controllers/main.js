@@ -3,8 +3,15 @@
 angular.module('fivefifteenApp')
   .controller('MainCtrl', function ($scope, $routeParams, Data, Steps) {
 
+    // Site Name
+    $scope.siteName = "FiveFifteen";
+
     // Simple Data service to persist form values.
     $scope.data = Data;
+    // Admin Contact
+    $scope.admin = "seth@lullabot.com";
+    // Define variable for opening email.
+    $scope.sendEmail = function() { sendMail($scope); };
     // An array of step objects in order.
     $scope.steps = Steps.data;
     // The current state.
@@ -20,6 +27,20 @@ angular.module('fivefifteenApp')
   .factory('Data', function () {
     // This variable holds all of the text used on the site.
     return {};
+  })
+
+  .controller('HeaderCtrl', function ($scope, $location) {
+    // Site Name
+    $scope.siteName = "5:15";
+
+    // Site Tagline
+    $scope.tagLine = "5 minutes to read, 15 minutes to write"
+
+    // App is in progress when you are not on the homepage.
+    $scope.inProgress = function(){
+      if ($location.path() == '/') { return true;} ;
+    };
+
   })
 
   .factory('Steps', function($firebase) {
@@ -73,3 +94,11 @@ angular.module('fivefifteenApp')
 
     return factory;
   });
+
+function sendMail($scope) {
+  var mailTo = $scope.admin;
+  var subject = $scope.siteName;
+  var link = 'mailto:' + mailTo +'?subject=Report from ' + subject;
+
+  window.location.href = link;
+};

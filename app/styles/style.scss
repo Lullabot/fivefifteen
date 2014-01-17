@@ -1,7 +1,10 @@
 $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
+@import 'global/variables';
 @import 'sass-bootstrap/lib/bootstrap';
+// Custom imports
 @import 'partials/layout';
+@import 'partials/clock';
 @import 'partials/steps';
 @import 'partials/alert';
 @import 'partials/main';
