@@ -1,5 +1,7 @@
 // Bootstrap variables
 $font-size-base:   16px;
 $line-height-base: 1.8;
-$container-desktop: 720px;
-$container-large-desktop: $container-desktop;
+$grid-gutter-width: 50px;
+$container-tablet: 720px;
+$container-desktop: $container-tablet;
+$container-large-desktop: $container-tablet;
