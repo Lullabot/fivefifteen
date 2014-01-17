@@ -1,25 +1,33 @@
-<div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
+<div class="row">
+  <div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
+</div>
 
-<div class="panel panel-info">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><strong>IMPORTANT: User action required.</strong></div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-7">
-        <p>This form is not 'automagically' sent, You will need to copy and paste the following into an email to:</p>
-      </div>
-      <div class="col-sm-5">
-        <a href="mailto:seth@lullabot.com" target="_blank"><button type="button" class="btn btn-lg btn-info">Launch a blank email to: Seth</button></a>
+<div class="row">
+  <div class="panel panel-info">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><strong>IMPORTANT: User action required.</strong></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-7">
+          <p>This form is not 'automagically' sent, You will need to copy and paste the following into an email to:</p>
+        </div>
+        <div class="col-sm-5">
+          <a href="mailto:seth@lullabot.com" target="_blank"><button type="button" class="btn btn-lg btn-info">Launch email to: Seth</button></a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<ul class="nav nav-pills">
-  <li class="active"><a href="#/preview">HTML Version</a></li>
-  <li><a href="#/preview-md">Markdown Version</a></li>
-</ul>
+<div class="row">
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#/preview">HTML Version</a></li>
+    <li><a href="#/preview-md">Markdown Version</a></li>
+  </ul>
+</div>
 
-<div class="preview">
-  <p ng-bind-html-unsafe="shebang | markdown"></p>
+<div class="row">
+  <div class="preview">
+    <p ng-bind-html-unsafe="shebang | markdown"></p>
+  </div>
 </div>
