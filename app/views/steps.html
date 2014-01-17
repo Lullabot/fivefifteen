@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <ul class="steps nav nav-tabs nav-justified" ng-repeat="step in steps">
-      <li ng-class="{active: state.currentPath == step.path}"><a href="#/step/{{step.path}}">{{step.shortTitle}}</a></li>
+    <ul class="steps nav nav-tabs nav-justified">
+      <li ng-class="{active: state.currentPath == step.path}" ng-repeat="step in steps">
+          <a href="#/step/{{step.path}}">{{step.shortTitle}}</a>
+      </li>
     </ul>
   </div>
 </div>
