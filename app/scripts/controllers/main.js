@@ -6,7 +6,10 @@ angular.module('fivefifteenApp')
     // Simple Data service to persist form values.
     $scope.data = Data;
 
-    $scope.path = $routeParams.stepName;
+    if (angular.isDefined($routeParams.stepName)) {
+      $scope.path = $routeParams.stepName;
+      $scope.step = Steps.rawData[$scope.path];
+    }
 
     $scope.steps = Steps.data;
   })
@@ -20,12 +23,17 @@ angular.module('fivefifteenApp')
   .factory('Steps', function($firebase) {
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
         promise = $firebase(url),
-        factory = { "data": {} };
+        factory = { "data": [] };
 
     promise.$on('loaded', function(values) {
       // If we get values, store it both in the scope and Steps.
-      if (typeof values !== "undefined") {
-        angular.extend(factory.data, values);
+      if (!angular.isDefined(values)) {
+        return;
+      }
+      factory.rawData = values;
+      for (var key in values) {
+        var stepNumber = values[key].stepNumber;
+        factory.data[stepNumber] = values[key];
       }
     });
 
