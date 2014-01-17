@@ -1,3 +1,12 @@
+<<<<<<< Updated upstream:app/styles/partials/_main.scss
+=======
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
+
+$baseFontSize: 16px;
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'partials/layout';
+
+>>>>>>> Stashed changes:app/styles/main.scss
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
