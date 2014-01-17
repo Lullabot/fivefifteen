@@ -1,19 +1,14 @@
 <div class="row">
   <div class="col-md-12">
-    <ul id='progress_bar' class='step_{{ steps.stop }}'>
-      <li><a href="#/success">Successes</a></li>
-      <li><a href="#/learned">Learned</a></li>
-      <li><a href="#/challenges">Challenges</a></li>
-      <li><a href="#/projects">Projects</a></li>
-      <li><a href="#/objectives">Objectives</a></li>
-      <li><a href="#/feedback">Feedback</a></li>
-      <li><a href="#/preview">Preview</a></li>
+    <ul class="steps nav nav-tabs nav-justified step_{{ steps.stop }}">
+      <li ng-class="{active: steps.stop == 'one'}"><a href="#/success">Successes</a></li>
+      <li ng-class="{active: steps.stop == 'two'}"><a href="#/learned">Learned</a></li>
+      <li ng-class="{active: steps.stop == 'three'}"><a href="#/challenges">Challenges</a></li>
+      <li ng-class="{active: steps.stop == 'four'}"><a href="#/projects">Projects</a></li>
+      <li ng-class="{active: steps.stop == 'five'}"><a href="#/objectives">Objectives</a></li>
+      <li ng-class="{active: steps.stop == 'six'}"><a href="#/feedback">Feedback</a></li>
+      <li ng-class="{active: steps.stop == 'seven'}"><a href="#/preview">Preview</a></li>
     </ul>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="well well-sm" clock></div>
-  </div>
-</div>
+<h3 class="clock"><span class="label label-default" clock></span></h3>
