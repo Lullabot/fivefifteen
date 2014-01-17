@@ -5,11 +5,13 @@ angular.module('fivefifteenApp')
 
     // Simple Data service to persist form values.
     $scope.data = Data;
-
+    // An array of step objects in order.
     $scope.steps = Steps.data;
+    // The current state.
+    $scope.state = Steps.state;
 
     if (angular.isDefined($routeParams.stepName)) {
-      $scope.path = $routeParams.stepName;
+      $scope.state.currentPath = $routeParams.stepName;
     }
   })
 
@@ -22,7 +24,28 @@ angular.module('fivefifteenApp')
   .factory('Steps', function($firebase) {
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
         promise = $firebase(url),
-        factory = { "data": [] };
+        factory = {};
+
+    factory.data = [];
+    factory.state = {
+      currentStep: {},
+      currentPath: '',
+      nextPath: ''
+    };
+
+    factory.determineNextPath = function() {
+      if (!angular.isDefined(this.rawData)) {
+        return;
+      }
+      this.state.currentStep = this.rawData[this.state.currentPath];
+      var nextStepNumber = this.state.currentStep.stepNumber + 1;
+      if (angular.isDefined(this.data[nextStepNumber])) {
+        this.state.nextPath = 'step/' + this.data[nextStepNumber].path;
+      }
+      else {
+        this.state.nextPath = 'preview';
+      }
+    };
 
     promise.$on('loaded', function(values) {
       // If we get values, store it both in the scope and Steps.
@@ -34,6 +57,10 @@ angular.module('fivefifteenApp')
         var stepNumber = values[key].stepNumber;
         factory.data[stepNumber] = values[key];
       }
+      if (!angular.isDefined(factory.state.currentPath)) {
+        factory.state.currentPath = factory.data[0].path;
+      }
+      factory.determineNextPath();
     });
 
     return factory;
