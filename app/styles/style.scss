@@ -1,9 +1,7 @@
 $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
-// We don't actually include bootstrap directly. Instead, we have our own file
-// so we can override some of the variables and mixins while still being free
-// to get a fresh copy of bootstrap. I hate bootstrap already yay!
-@import 'partials/bootstrap';
+@import 'global/variables';
+@import 'sass-bootstrap/lib/bootstrap';
 // Custom imports
 @import 'partials/layout';
 @import 'partials/clock';
