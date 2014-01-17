@@ -1,14 +1,23 @@
-<div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
-<p class="alert alert-danger">Copy and paste the following into an email to <a href="mailto:seth@lullabot.com" target="_blank">Seth</a></p>
+<div class="row">
+  <div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
+</div>
 
-<ul class="nav nav-pills">
-  <li><a href="#/preview">HTML Version</a></li>
-  <li class="active"><a href="#/preview-md">Markdown Version</a></li>
-</ul>
+<div class="row">
+  <div ng-include="'/views/user-copy-action.html'"></div>
+</div>
 
-<div class="preview">
-  <div class="form-group">
-    <textarea class="form-control" name="preview-md" rows="15" ng-model="shebang"></textarea>
-    <small><em>Note that all edits here are not persistent.</em></small>
+<div class="row">
+  <ul class="nav nav-tabs">
+    <li><a href="#/preview">HTML Version</a></li>
+    <li class="active"><a href="#/preview-md">Markdown Version</a></li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="preview">
+    <div class="form-group">
+      <textarea class="form-control" name="preview-md" rows="15" ng-model="shebang"></textarea>
+      <small><em>Note that all edits here are not persistent.</em></small>
+    </div>
   </div>
 </div>
