@@ -25,10 +25,10 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <div class="container">
+    <div class="container" ng-controller="HeaderCtrl">
       <div class='page-header'>
-          <h1><a href="#/">5:15</a> <small>&mdash; 5 minutes to read, 15 minutes to write</small></h1>
-          <div class="row">
+          <h1><a href="#/">{{ siteName }}</a> <small>&mdash; {{ tagLine }}</small></h1>
+          <div class="row" ng-show="inProgress()">
               <div class="col-xs-4">
                   <a href="#/success" id="start" type="button" class="btn btn-primary btn-lg btn-block">Start</a>
               </div>
