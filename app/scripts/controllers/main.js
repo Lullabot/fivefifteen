@@ -12,6 +12,7 @@ angular.module('fivefifteenApp')
 
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
+      Steps.updateState();
     }
   })
 
@@ -31,6 +32,13 @@ angular.module('fivefifteenApp')
       currentStep: {},
       currentPath: '',
       nextPath: ''
+    };
+
+    factory.updateState = function () {
+      if (angular.isDefined(this.rawData)) {
+        this.state.currentStep = this.rawData[this.state.currentPath];
+        this.determineNextPath();
+      }
     };
 
     factory.determineNextPath = function() {
