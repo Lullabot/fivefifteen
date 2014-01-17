@@ -9,13 +9,6 @@ angular.module('fivefifteenApp')
     $scope.path = $routeParams.stepName;
 
     $scope.steps = Steps.data;
-
-    Steps.promise.$on('loaded', function(values) {
-      // If we get values, store it both in the scope and Steps.
-      if (typeof values !== "undefined") {
-        angular.extend(Steps.data, values);
-      }
-    });
   })
 
   // scope data is not persistent across views so we use a simple service.
@@ -26,10 +19,15 @@ angular.module('fivefifteenApp')
 
   .factory('Steps', function($firebase) {
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
-        ref = $firebase(url);
+        ref = $firebase(url),
+        factory = { "data": {} };
 
-    return {
-      "promise": ref,
-      "data": {}
-    };
+    ref.$on('loaded', function(values) {
+      // If we get values, store it both in the scope and Steps.
+      if (typeof values !== "undefined") {
+        angular.extend(factory.data, values);
+      }
+    });
+
+    return factory;
   });
