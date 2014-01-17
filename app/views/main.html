@@ -1,4 +1,4 @@
-<div class="overview" ng-repeat="step in steps | orderBy:stepNumber">
-  <div ng-bind-html-unsafe="step.title | markdown"></div>
-  <div ng-bind-html-unsafe="step.text | markdown"></div>
+<div class="overview" ng-repeat="step in steps">
+  <div ng-bind-html="step.title | markdown"></div>
+  <div ng-bind-html="step.text | markdown"></div>
 </div>
