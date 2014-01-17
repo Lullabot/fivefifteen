@@ -27,6 +27,12 @@ module.exports = function (grunt) {
   } catch (e) {}
 
   grunt.initConfig({
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
+    },
     yeoman: yeomanConfig,
     watch: {
       coffee: {
@@ -393,4 +399,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-gh-pages');
 };
