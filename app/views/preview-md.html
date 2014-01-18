@@ -16,11 +16,7 @@
 <div class="row">
   <div class="preview">
     <div class="form-group">
-      <div class="results" name="preview-md" rows="15" ng-repeat="step in steps">
-        {{step.title}}<br>
-        {{step.text}}<br>
-        {{data[step.path]}}
-      </div>
+      <textarea class="results form-control" name="preview-md" rows="15" ng-bind="getPreview()"></textarea>
       <small><em>Note that all edits here are not persistent.</em></small>
     </div>
   </div>

@@ -14,9 +14,5 @@
 </div>
 
 <div class="row">
-  <div class="preview" ng-repeat="step in steps">
-    <div ng-bind-html="step.title | markdown"></div>
-    <div ng-bind-html="step.text | markdown"></div>
-    <div ng-bind-html="data[step.path] | markdown"></div>
-  </div>
+  <div class="preview" ng-bind-html="getPreview() | markdown"></div>
 </div>

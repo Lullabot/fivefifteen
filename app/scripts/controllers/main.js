@@ -17,6 +17,21 @@ angular.module('fivefifteenApp')
     // The current state.
     $scope.state = StepsFactory.state;
 
+    // Preview function, to concatenate the results of the steps.
+    $scope.getPreview = function() {
+      var preview = "",
+          step, stepName;
+      for (stepName in this.steps) {
+        step = this.steps[stepName];
+        preview += step.title + "\n\n";
+        preview += step.text + "\n\n";
+        if (angular.isDefined(this.data[step.path])) {
+          preview += this.data[step.path] + "\n\n";
+        }
+      }
+      return preview;
+    };
+
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
       StepsFactory.updateState();
@@ -94,6 +109,11 @@ angular.module('fivefifteenApp')
       // we can determine the next path properly.
       if (!angular.isDefined(StepsClass.state.currentPath)) {
         StepsClass.state.currentPath = StepsClass.data[0].path;
+      }
+      // If the path doesn't match a step, just return. No further processing
+      // necessary.
+      if (!angular.isDefined(StepsClass.rawData[StepsClass.state.currentPath])) {
+        return;
       }
       // Determine the current step from the current path.
       StepsClass.state.currentStep = StepsClass.rawData[StepsClass.state.currentPath];
