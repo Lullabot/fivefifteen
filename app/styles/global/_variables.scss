@@ -2,6 +2,9 @@
 $font-size-base:   16px;
 $line-height-base: 1.8;
 $grid-gutter-width: 50px;
-$container-tablet: 720px;
-$container-desktop: $container-tablet;
-$container-large-desktop: $container-tablet;
+$container-sm: 480px;
+$container-md: 640px;
+$container-lg: 720px;
+$screen-sm-min: 480px;
+$screen-md-min: 640px;
+$screen-lg-min: 768px;
