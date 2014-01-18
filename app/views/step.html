@@ -1,5 +1,5 @@
 <div class="row">
-  <div ng-include="'views/steps.html'"></div>
+  <div class="col-xs-12" ng-include="'views/steps.html'"></div>
 </div>
 
 <div class="row"><div class="col-xs-12">
@@ -13,7 +13,7 @@
       <textarea class="form-control" name="success" rows="15" ng-model="data[state.currentPath]"></textarea>
       <small><em>Markdown formatting accepted.</em></small>
     </div>
-    <a href="#/{{state.nextPath}}" type="button" class="btn btn-primary pull-right">Next</a>
+    <a href="#/{{state.nextPath}}" type="button" class="btn btn-primary btn-lg pull-right">Next</a>
     <a href="#/preview" title="preview" class="glyphicon glyphicon-eye-open pull-right"></a>
   </div>
 </div></div>
