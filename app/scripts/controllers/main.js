@@ -34,11 +34,11 @@ angular.module('fivefifteenApp')
     $scope.siteName = "5:15";
 
     // Site Tagline
-    $scope.tagLine = "5 minutes to read, 15 minutes to write"
+    $scope.tagLine = "5 minutes to read, 15 minutes to write";
 
     // App is in progress when you are not on the homepage.
     $scope.inProgress = function(){
-      if ($location.path() == '/') { return true; }
+      return $location.path() == '/';
     };
 
     $scope.state = StepsFactory.state;
@@ -141,7 +141,6 @@ angular.module('fivefifteenApp')
 function sendMail($scope) {
   var mailTo = $scope.admin;
   var subject = $scope.siteName;
-  var link = 'mailto:' + mailTo +'?subject=Report from ' + subject;
 
-  window.location.href = link;
+  window.location.href = 'mailto:' + mailTo + '?subject=Report from ' + subject;
 };
