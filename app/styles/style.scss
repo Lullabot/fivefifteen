@@ -2,9 +2,13 @@ $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
 @import 'global/variables';
 @import 'sass-bootstrap/lib/bootstrap';
+// Mixins
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
 // Custom imports
 @import 'partials/layout';
 @import 'partials/clock';
 @import 'partials/steps';
 @import 'partials/alert';
+@import 'partials/logo';
 @import 'partials/main';

@@ -46,8 +46,6 @@ angular.module('fivefifteenApp')
 
   .controller('HeaderCtrl', ['$scope', '$location', 'StepsFactory', 
                     function ($scope,   $location,   StepsFactory) {
-    // Site Name
-    $scope.siteName = "5:15";
 
     // Site Tagline
     $scope.tagLine = "5 minutes to read, 15 minutes to write";

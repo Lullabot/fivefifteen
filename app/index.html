@@ -27,11 +27,20 @@
 
     <div class="container" ng-controller="HeaderCtrl">
       <div class='page-header'>
-          <h1><a href="#/" ng-bind="siteName"></a> <small>&mdash; <span ng-bind="tagLine"></span></small></h1>
+          <div class="row">
+            <h1 class="fft-logo col-xs-12 col-sm-6">
+              <a href="#/">
+                <span class="fft-clock-number">5</span><span class="fft-clock-separator">:</span><span class="fft-clock-number">1</span><span class="fft-clock-number">5</span>
+              </a>
+            </h1>
+            <div class="col-xs-12 col-sm-6">
+              <a href="#/{{state.startPath}}" id="start" type="button" class="btn btn-primary btn-lg btn-block">Start</a>
+            </div>
+          </div>
           <div class="row" ng-show="inProgress()">
-              <div class="col-xs-4">
-                  <a href="#/{{state.startPath}}" id="start" type="button" class="btn btn-primary btn-lg btn-block">Start</a>
-              </div>
+            <div class="col-xs-12">
+             <p class="lead" ng-bind="tagLine"></p>
+            </div>
           </div>
       </div>
       <!-- Github Ribbon -->
