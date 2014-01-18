@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('fivefifteenApp')
-  .controller('MainCtrl', function ($scope, $routeParams, Data, StepsFactory) {
-
+  .controller('MainCtrl', ['$scope', '$routeParams', 'Data', 'StepsFactory', 
+                  function ($scope,   $routeParams,   Data,   StepsFactory) {
     // Site Name
     $scope.siteName = "FiveFifteen";
 
@@ -36,7 +36,7 @@ angular.module('fivefifteenApp')
       $scope.state.currentPath = $routeParams.stepName;
     }
     StepsFactory.updateState();
-  })
+  }])
 
   // scope data is not persistent across views so we use a simple service.
   .factory('Data', function () {
@@ -44,7 +44,8 @@ angular.module('fivefifteenApp')
     return {};
   })
 
-  .controller('HeaderCtrl', function ($scope, $location, StepsFactory) {
+  .controller('HeaderCtrl', ['$scope', '$location', 'StepsFactory', 
+                    function ($scope,   $location,   StepsFactory) {
     // Site Name
     $scope.siteName = "5:15";
 
@@ -57,12 +58,12 @@ angular.module('fivefifteenApp')
     };
 
     $scope.state = StepsFactory.state;
-  })
+  }])
 
   /**
    * A factory for the steps.
    */
-  .factory('StepsFactory', function($firebase) {
+  .factory('StepsFactory', ['$firebase', function($firebase) {
     // Set up the firebase object, and create a promise from it.
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
         promise = $firebase(url),
@@ -161,11 +162,11 @@ angular.module('fivefifteenApp')
     });
 
     return StepsClass;
-  });
+  }]);
 
 function sendMail($scope) {
   var mailTo = $scope.admin;
   var subject = $scope.siteName;
 
   window.location.href = 'mailto:' + mailTo + '?subject=Report from ' + subject;
-};
+}
