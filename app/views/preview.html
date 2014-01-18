@@ -1,5 +1,5 @@
 <div class="row">
-  <div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
+  <div ng-include="'views/steps.html'"></div>
 </div>
 
 <div class="row">
@@ -14,7 +14,5 @@
 </div>
 
 <div class="row">
-  <div class="preview">
-    <p ng-bind-html-unsafe="shebang | markdown"></p>
-  </div>
+  <div class="preview" ng-bind-html="getPreview() | markdown"></div>
 </div>

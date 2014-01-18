@@ -30,12 +30,12 @@
           <h1><a href="#/" ng-bind="siteName"></a> <small>&mdash; <span ng-bind="tagLine"></span></small></h1>
           <div class="row" ng-show="inProgress()">
               <div class="col-xs-4">
-                  <a href="#/success" id="start" type="button" class="btn btn-primary btn-lg btn-block">Start</a>
+                  <a href="#/{{state.startPath}}" id="start" type="button" class="btn btn-primary btn-lg btn-block">Start</a>
               </div>
           </div>
       </div>
-    <!-- Github Ribbon -->
-    <a href="https://github.com/sirkitree/fivefifteen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+      <!-- Github Ribbon -->
+      <a href="https://github.com/sirkitree/fivefifteen"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
     </div>
     
@@ -46,12 +46,15 @@
     <script src="bower_components/angular/angular.js"></script>
 
     <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/marked.js"></script>
     <script src="scripts/controllers/main.js"></script>

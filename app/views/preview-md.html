@@ -1,5 +1,5 @@
 <div class="row">
-  <div ng-include="steps.url" ng-init="steps.stop='seven'"></div>
+  <div ng-include="'views/steps.html'"></div>
 </div>
 
 <div class="row">
@@ -16,7 +16,7 @@
 <div class="row">
   <div class="preview">
     <div class="form-group">
-      <textarea class="form-control" name="preview-md" rows="15" ng-model="shebang"></textarea>
+      <textarea class="results form-control" name="preview-md" rows="15" ng-bind="getPreview()"></textarea>
       <small><em>Note that all edits here are not persistent.</em></small>
     </div>
   </div>

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('fivefifteenApp.filters', [])
-  .filter('markdown', function() {
+  .filter('markdown', ['$sce', function($sce) {
     return function(text) {
       if (typeof text !== 'undefined') {
         var converted = marked(text);
-        return converted;
+        return $sce.trustAsHtml(converted);
       }
     };
-  });
+  }]);
