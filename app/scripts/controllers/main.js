@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fivefifteenApp')
-  .controller('MainCtrl', function ($scope, $routeParams, Data, Steps) {
+  .controller('MainCtrl', function ($scope, $routeParams, Data, StepsFactory) {
 
     // Site Name
     $scope.siteName = "FiveFifteen";
@@ -13,13 +13,13 @@ angular.module('fivefifteenApp')
     // Define variable for opening email.
     $scope.sendEmail = function() { sendMail($scope); };
     // An array of step objects in order.
-    $scope.steps = Steps.data;
+    $scope.steps = StepsFactory.data;
     // The current state.
-    $scope.state = Steps.state;
+    $scope.state = StepsFactory.state;
 
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
-      Steps.updateState();
+      StepsFactory.updateState();
     }
   })
 
@@ -29,7 +29,7 @@ angular.module('fivefifteenApp')
     return {};
   })
 
-  .controller('HeaderCtrl', function ($scope, $location, Steps) {
+  .controller('HeaderCtrl', function ($scope, $location, StepsFactory) {
     // Site Name
     $scope.siteName = "5:15";
 
@@ -41,59 +41,101 @@ angular.module('fivefifteenApp')
       if ($location.path() == '/') { return true; }
     };
 
-    $scope.state = Steps.state;
+    $scope.state = StepsFactory.state;
   })
 
-  .factory('Steps', function($firebase) {
+  /**
+   * A factory for the steps.
+   */
+  .factory('StepsFactory', function($firebase) {
+    // Set up the firebase object, and create a promise from it.
     var url = new Firebase("https://fivefifteen.firebaseio.com/steps"),
         promise = $firebase(url),
-        factory = {};
+        StepsClass = {};
 
-    factory.data = [];
-    factory.state = {
+    // Store the data as an array, so that we can order by step number.
+    StepsClass.data = [];
+    // Store a state object. We need this to be an object, so that we can have
+    // it be updated on $scope when we get the data from the promise.
+    StepsClass.state = {
       currentStep: {},
       currentPath: '',
       nextPath: ''
     };
 
-    factory.updateState = function () {
-      if (angular.isDefined(this.rawData)) {
-        this.state.currentStep = this.rawData[this.state.currentPath];
-        this.determineNextPath();
+    /**
+     * Store the data from the database in the factory. This does processing to
+     * be sure the data is in the order that we need.
+     */
+    StepsClass.storeData = function (data) {
+      // Store the raw object data, which has the path as key, so that we can
+      // do look ups by path.
+      StepsClass.rawData = data;
+      // Now iterate over each item in the object so that we can create an array
+      // from the data. We need an array, so that it can be ordered by the step
+      // numbers, and so that ng orderBy will work properly.
+      for (var key in data) {
+        var stepNumber = data[key].stepNumber;
+        StepsClass.data[stepNumber] = data[key];
       }
+
+      StepsClass.updateState();
     };
 
-    factory.determineNextPath = function() {
-      if (!angular.isDefined(this.rawData)) {
+    /**
+     * Update the state object on the factory.
+     */
+    StepsClass.updateState = function () {
+      // If we don't have rawData yet, just return.
+      if (!angular.isDefined(StepsClass.rawData)) {
         return;
       }
-      this.state.currentStep = this.rawData[this.state.currentPath];
-      var nextStepNumber = this.state.currentStep.stepNumber + 1;
-      if (angular.isDefined(this.data[nextStepNumber])) {
-        this.state.nextPath = 'step/' + this.data[nextStepNumber].path;
+      // If currentPath is not already set on the state, set it now, so that
+      // we can determine the next path properly.
+      if (!angular.isDefined(StepsClass.state.currentPath)) {
+        StepsClass.state.currentPath = StepsClass.data[0].path;
       }
+      // Determine the current step from the current path.
+      StepsClass.state.currentStep = StepsClass.rawData[StepsClass.state.currentPath];
+      // Now that we have the current step and path, we can determine the next
+      // path.
+      StepsClass.determineNextPath();
+    };
+
+    /**
+     * Determine the next path from the current state.
+     */
+    StepsClass.determineNextPath = function() {
+      // If we don't have rawData yet, just return.
+      if (!angular.isDefined(StepsClass.rawData)) {
+        return;
+      }
+      // TODO: The next step number, ideally, is one more than the current one.
+      // But this is fragile and needs improvement.
+      var nextStepNumber = StepsClass.state.currentStep.stepNumber + 1;
+      // If we have the nextStepNumber in our data, use it.
+      if (angular.isDefined(StepsClass.data[nextStepNumber])) {
+        StepsClass.state.nextPath = 'step/' + StepsClass.data[nextStepNumber].path;
+      }
+      // Otherwise, assume we are going to the end page.
       else {
-        this.state.nextPath = 'preview';
+        StepsClass.state.nextPath = 'preview';
       }
     };
 
-    promise.$on('loaded', function(values) {
-      // If we get values, store it both in the scope and Steps.
-      if (!angular.isDefined(values)) {
+    /**
+     * When the promise is loaded, and if we have valid data, store it on the
+     * factory class.
+     */
+    promise.$on('loaded', function(data) {
+      // If we get data, store it both in the scope and StepsFactory.
+      if (!angular.isDefined(data)) {
         return;
       }
-      factory.rawData = values;
-      for (var key in values) {
-        var stepNumber = values[key].stepNumber;
-        factory.data[stepNumber] = values[key];
-      }
-      if (!angular.isDefined(factory.state.currentPath)) {
-        factory.state.currentPath = factory.data[0].path;
-      }
-      factory.determineNextPath();
+      StepsClass.storeData(data);
     });
 
-    return factory;
+    return StepsClass;
   });
 
 function sendMail($scope) {
