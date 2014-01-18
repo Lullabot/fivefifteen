@@ -1,6 +1,7 @@
 <div class="row">
   <div ng-include="'views/steps.html'"></div>
 </div>
+
 <div class="row">
   <p ng-bind-html="state.currentStep.title | markdown"></p>
   <p ng-bind-html="state.currentStep.text | markdown"></p>
@@ -14,5 +15,5 @@
     </div>
     <a href="#/{{state.nextPath}}" type="button" class="btn btn-primary pull-right">Next</a>
     <a href="#/preview" title="preview" class="glyphicon glyphicon-eye-open pull-right"></a>
-</div>
+  </div>
 </div>
