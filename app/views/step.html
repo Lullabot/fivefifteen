@@ -2,12 +2,12 @@
   <div ng-include="'views/steps.html'"></div>
 </div>
 
-<div class="row">
+<div class="row"><div class="col-xs-12">
   <p ng-bind-html="state.currentStep.title | markdown"></p>
   <p ng-bind-html="state.currentStep.text | markdown"></p>
-</div>
+</div></div>
 
-<div class="row">
+<div class="row"><div class="col-xs-12">
   <div role="form">
     <div class="form-group">
       <textarea class="form-control" name="success" rows="15" ng-model="data[state.currentPath]"></textarea>
@@ -16,4 +16,4 @@
     <a href="#/{{state.nextPath}}" type="button" class="btn btn-primary pull-right">Next</a>
     <a href="#/preview" title="preview" class="glyphicon glyphicon-eye-open pull-right"></a>
   </div>
-</div>
+</div></div>
