@@ -34,8 +34,8 @@ angular.module('fivefifteenApp')
 
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
-      StepsFactory.updateState();
     }
+    StepsFactory.updateState();
   })
 
   // scope data is not persistent across views so we use a simple service.
@@ -74,8 +74,9 @@ angular.module('fivefifteenApp')
     // it be updated on $scope when we get the data from the promise.
     StepsClass.state = {
       currentStep: {},
-      currentPath: '',
-      nextPath: ''
+      currentPath: null,
+      startPath: null,
+      nextPath: null
     };
 
     /**
@@ -104,6 +105,10 @@ angular.module('fivefifteenApp')
       // If we don't have rawData yet, just return.
       if (!angular.isDefined(StepsClass.rawData)) {
         return;
+      }
+      // If we don't have startPath, set it up.
+      if (!StepsClass.state.startPath) {
+        StepsClass.state.startPath = 'step/' + StepsClass.data[0].path;
       }
       // If currentPath is not already set on the state, set it now, so that
       // we can determine the next path properly.
