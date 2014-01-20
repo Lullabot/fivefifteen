@@ -167,6 +167,8 @@ angular.module('fivefifteenApp')
 function sendMail($scope) {
   var mailTo = $scope.admin;
   var subject = $scope.siteName;
+  var preview = $scope.getPreview();
+  console.log(preview);
 
-  window.location.href = 'mailto:' + mailTo + '?subject=Report from ' + subject;
+  window.location.href = 'mailto:' + mailTo + '?subject=Report from ' + subject + '&body=' + encodeURIComponent(preview);
 }
