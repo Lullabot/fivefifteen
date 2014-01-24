@@ -11,7 +11,8 @@
     "angular-resource": "~1.2.10",
     "angular-cookies": "~1.2.10",
     "angular-sanitize": "~1.2.10",
-    "angular-route": "~1.2.10"
+    "angular-route": "~1.2.10",
+    "angular-local-storage": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.10",
