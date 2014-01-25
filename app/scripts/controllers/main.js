@@ -38,23 +38,35 @@ angular.module('fivefifteenApp')
 
     StepsFactory.updateState();
 
-    // Watch for any changes to Data. We debounce this to run ever second.
+    // Watch for any changes to data. We debounce this to only run every second.
     $scope.$watch('data', $debounce(DataFactory.save, 1000), true);
   }])
 
 
-  // scope data is not persistent across views so we use a simple service.
+  // Our Data Factory, which uses local storage to save the user's entries.
   .factory('DataFactory', ['localStorageService', function(
                             localStorageService) {
     // The data variable holds all of the text used on the site.
     var dataObject = { "data": {} };
 
+    /**
+     * Save the data to localStorage. This only runs every second or so, thanks
+     * to $debounce.
+     *
+     * @param newData
+     *   The new data to be saved.
+     * @param oldData
+     *   The previous object. Only saves if there is a change.
+     */
     dataObject.save = function(newData, oldData) {
       if (newData !== oldData) {
         localStorageService.add('data', newData);
       }
     };
 
+    /**
+     * Load the data from localStorage.
+     */
     dataObject.load = function() {
       this.data = localStorageService.get('data') || {};
     };
