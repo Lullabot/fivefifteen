@@ -1,7 +1,10 @@
 'use strict';
 
-angular.module('fivefifteenApp', ['ngRoute', 'fivefifteenApp.directives', 'fivefifteenApp.filters', 'firebase'])
-  .config(function ($routeProvider) {
+angular.module('fivefifteenApp', ['ngRoute', 'fivefifteenApp.directives', 'fivefifteenApp.filters', 'firebase', 'LocalStorageModule', 'ngDebounce'])
+  .config([    '$routeProvider', 'localStorageServiceProvider',
+      function ($routeProvider,   localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('fiveFifteen');
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -22,4 +25,4 @@ angular.module('fivefifteenApp', ['ngRoute', 'fivefifteenApp.directives', 'fivef
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);

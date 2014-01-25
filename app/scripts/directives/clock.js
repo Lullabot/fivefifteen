@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('fivefifteenApp.directives', [])
-  .directive('clock', function ($timeout, Data) {
+  .directive('clock', ['$timeout', 'DataFactory', function (
+                        $timeout,   DataFactory) {
     return function (scope, element) {
       var timeoutId; // timeoutId, so that we can cancel the time updates
-      if (!Data.initTime) {
-        Data.initTime = new Date();
+      if (!DataFactory.initTime) {
+        DataFactory.initTime = new Date();
       }
-      var init = Data.initTime;
+      var init = DataFactory.initTime;
       
       var current = new Date();
       var elapsed = new Date();
@@ -34,4 +35,4 @@ angular.module('fivefifteenApp.directives', [])
  
       updateLater(); // kick off the UI update process.
     };
-  });
+  }]);

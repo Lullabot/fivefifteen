@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('fivefifteenApp')
-  .controller('MainCtrl', ['$scope', '$routeParams', 'Data', 'StepsFactory', 
-                  function ($scope,   $routeParams,   Data,   StepsFactory) {
+  .controller('MainCtrl', ['$scope', '$routeParams', '$debounce', 'DataFactory', 'StepsFactory',
+                  function ($scope,   $routeParams,   $debounce,   DataFactory,   StepsFactory) {
     // Site Name
     $scope.siteName = "FiveFifteen";
 
     // Simple Data service to persist form values.
-    $scope.data = Data;
+    $scope.data = DataFactory.data;
     // Admin Contact
     $scope.admin = "seth@lullabot.com";
     // Define variable for opening email.
@@ -35,14 +35,36 @@ angular.module('fivefifteenApp')
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
     }
+
     StepsFactory.updateState();
+
+    // Watch for any changes to Data. We debounce this to run ever second.
+    $scope.$watch('data', $debounce(DataFactory.save, 1000), true);
   }])
 
+
   // scope data is not persistent across views so we use a simple service.
-  .factory('Data', function () {
-    // This variable holds all of the text used on the site.
-    return {};
-  })
+  .factory('DataFactory', ['localStorageService', function(
+                            localStorageService) {
+    // The data variable holds all of the text used on the site.
+    var dataObject = { "data": {} };
+
+    dataObject.save = function(newData, oldData) {
+      if (newData !== oldData) {
+        localStorageService.add('data', newData);
+      }
+    };
+
+    dataObject.load = function() {
+      this.data = localStorageService.get('data') || {};
+    };
+
+    // TODO: Only load when asked to by the user.
+    dataObject.load();
+
+    return dataObject;
+  }])
+
 
   .controller('HeaderCtrl', ['$scope', '$location', 'StepsFactory', 
                     function ($scope,   $location,   StepsFactory) {
