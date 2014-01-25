@@ -29,6 +29,4 @@ angular.module('ngDebounce', []).factory('$debounce', function($timeout, $q) {
       return deferred.promise;
     };
   };
-});/**
- * Created by jsansbury on 1/24/14.
- */
+});
