@@ -47,12 +47,16 @@ angular.module('fivefifteenApp')
       modalService.showModal({}, modalOptions).then(function () {
         DataFactory.restoreData();
         $scope.data = DataFactory.data;
+      },
+      // If the user cancelled, clear the storage.
+      function() {
+        DataFactory.clearStorage();
       });
     };
 
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
-      if (DataFactory.storedData && !DataFactory.isRestored()) {
+      if (DataFactory.storedData && DataFactory.askToRestore()) {
         $scope.modal();
       }
     }
@@ -69,7 +73,7 @@ angular.module('fivefifteenApp')
                             localStorageService) {
     // The data variable holds all of the text used on the site.
     var dataObject = { "data": {}, "storedData": {} },
-        restored = false;
+        prompted = false;
 
     /**
      * Save the data to localStorage. This only runs every second or so, thanks
@@ -100,15 +104,24 @@ angular.module('fivefifteenApp')
       if (dataObject.storedData) {
         dataObject.data = dataObject.storedData;
         // Set restored to true.
-        restored = true;
+        prompted = true;
       }
+    };
+
+    /**
+     * Clear local storage data.
+     */
+    dataObject.clearStorage = function () {
+      localStorageService.remove('data');
+      dataObject.storedData = null;
+      prompted = true;
     };
 
     /**
      * Returns true if data was restored from local storage.
      */
-    dataObject.isRestored = function () {
-      return restored;
+    dataObject.askToRestore = function () {
+      return !prompted;
     };
 
     dataObject.storedData = dataObject.load() || {};
