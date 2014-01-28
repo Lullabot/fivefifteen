@@ -140,10 +140,24 @@ angular.module('fivefifteenApp')
 
     // App is in progress when you are not on the homepage.
     $scope.inProgress = function(){
-      return $location.path() == '/';
+      return $location.path() != '/';
     };
 
     $scope.state = StepsFactory.state;
+    $scope.steps = StepsFactory.data;
+    $scope.progress = 0;
+    $scope.updateProgress = function() {
+      var current = 0, total = 1;
+      if (angular.isDefined($scope.state.currentStep.stepNumber)) {
+        current = $scope.state.currentStep.stepNumber + 1;
+      }
+      if (angular.isDefined($scope.steps)) {
+        total = $scope.progress.total = $scope.steps.length;
+      }
+      $scope.progress = (current / total) * 100;
+    };
+    // Watch for any changes to data. We debounce this to only run every second.
+    $scope.$watch('state', $scope.updateProgress, true);
   }])
 
   /**
