@@ -124,7 +124,7 @@ angular.module('fivefifteenApp')
       return !prompted;
     };
 
-    dataObject.storedData = dataObject.load() || {};
+    dataObject.storedData = dataObject.load() || false;
 
     return dataObject;
   }])
