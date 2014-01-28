@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('fivefifteenApp')
-  .controller('MainCtrl', ['$scope', '$routeParams', '$debounce', 'DataFactory', 'StepsFactory',
-                  function ($scope,   $routeParams,   $debounce,   DataFactory,   StepsFactory) {
+  .controller('MainCtrl', ['$scope', '$routeParams', '$debounce', 'DataFactory', 'StepsFactory', 'modalService',
+                  function( $scope,   $routeParams,   $debounce,   DataFactory,   StepsFactory,   modalService) {
     // Site Name
     $scope.siteName = "FiveFifteen";
 
@@ -32,8 +32,29 @@ angular.module('fivefifteenApp')
       return preview;
     };
 
+    /**
+     * Present a modal dialog to the user, asking them if they want to load the
+     * data from local storage.
+     */
+    $scope.modal = function() {
+      var modalOptions = {
+        closeButtonText: 'Start Fresh',
+        actionButtonText: 'Restore',
+        headerText: 'Restore previous session?',
+        bodyText: 'It looks like you were already had some work from last time. Would you like to restore that work, or start fresh?'
+      };
+
+      modalService.showModal({}, modalOptions).then(function () {
+        DataFactory.restoreData();
+        $scope.data = DataFactory.data;
+      });
+    };
+
     if (angular.isDefined($routeParams.stepName)) {
       $scope.state.currentPath = $routeParams.stepName;
+      if (DataFactory.storedData && !DataFactory.isRestored()) {
+        $scope.modal();
+      }
     }
 
     StepsFactory.updateState();
@@ -47,7 +68,8 @@ angular.module('fivefifteenApp')
   .factory('DataFactory', ['localStorageService', function(
                             localStorageService) {
     // The data variable holds all of the text used on the site.
-    var dataObject = { "data": {} };
+    var dataObject = { "data": {}, "storedData": {} },
+        restored = false;
 
     /**
      * Save the data to localStorage. This only runs every second or so, thanks
@@ -68,11 +90,28 @@ angular.module('fivefifteenApp')
      * Load the data from localStorage.
      */
     dataObject.load = function() {
-      this.data = localStorageService.get('data') || {};
+      return localStorageService.get('data');
     };
 
-    // TODO: Only load when asked to by the user.
-    dataObject.load();
+    /**
+     * Set the data to what was loaded from local storage.
+     */
+    dataObject.restoreData = function () {
+      if (dataObject.storedData) {
+        dataObject.data = dataObject.storedData;
+        // Set restored to true.
+        restored = true;
+      }
+    };
+
+    /**
+     * Returns true if data was restored from local storage.
+     */
+    dataObject.isRestored = function () {
+      return restored;
+    };
+
+    dataObject.storedData = dataObject.load() || {};
 
     return dataObject;
   }])

@@ -1,6 +1,16 @@
 'use strict';
 
-angular.module('fivefifteenApp', ['ngRoute', 'fivefifteenApp.directives', 'fivefifteenApp.filters', 'firebase', 'LocalStorageModule', 'ngDebounce'])
+var dependencies = [
+  'ngRoute',
+  'fivefifteenApp.directives',
+  'fivefifteenApp.filters',
+  'firebase',
+  'LocalStorageModule',
+  'ngDebounce',
+  'ngAnimate',
+  'ui.bootstrap'];
+
+angular.module('fivefifteenApp', dependencies)
   .config([    '$routeProvider', 'localStorageServiceProvider',
       function ($routeProvider,   localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('fiveFifteen');
