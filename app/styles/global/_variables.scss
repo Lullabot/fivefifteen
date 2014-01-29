@@ -5,3 +5,9 @@ $grid-gutter-width: 50px;
 $container-tablet: 720px;
 $container-desktop: $container-tablet;
 $container-large-desktop: $container-tablet;
+
+// Five Fifteen logo.
+$fft-logo-background: #ddd !default;
+$fft-logo-split: darken($fft-logo-background, 10%) !default;
+$fft-logo-number-color: #fff !default;
+$fft-logo-separator-color: #ddd !default;
