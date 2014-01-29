@@ -159,7 +159,7 @@ angular.module('fivefifteenApp')
       }
       $scope.progress = (current / total) * 100;
     };
-    // Watch for any changes to data. We debounce this to only run every second.
+    // Watch for any changes to state, and update the progress.
     $scope.$watch('state', $scope.updateProgress, true);
   }])
 
