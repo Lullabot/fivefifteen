@@ -37,6 +37,16 @@ angular.module('fivefifteenApp')
      * data from local storage.
      */
     $scope.modal = function() {
+      // Callback to be executed if the user chooses to restore the stored data.
+      var restore = function () {
+        DataFactory.restoreData();
+        $scope.data = DataFactory.data;
+      };
+      // Callback to be executed when the user closes the modal.
+      var cancel = function() {
+        DataFactory.clearStorage();
+      };
+      // Options for the modalService.
       var modalOptions = {
         closeButtonText: 'Start Fresh',
         actionButtonText: 'Restore',
@@ -44,14 +54,7 @@ angular.module('fivefifteenApp')
         bodyText: 'It looks like you were already had some work from last time. Would you like to restore that work, or start fresh?'
       };
 
-      modalService.showModal({}, modalOptions).then(function () {
-        DataFactory.restoreData();
-        $scope.data = DataFactory.data;
-      },
-      // If the user cancelled, clear the storage.
-      function() {
-        DataFactory.clearStorage();
-      });
+      modalService.showModal({}, modalOptions).then(restore, cancel);
     };
 
     if (angular.isDefined($routeParams.stepName)) {
