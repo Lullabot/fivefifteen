@@ -13,7 +13,7 @@ angular.module('fivefifteenApp.directives', [])
       var init = DataFactory.initTime;
 
       elapsed.setTime(current.getTime() - init.getTime());
-      element.text('Minute/s elapsed: ' + elapsed.getMinutes());
+      element.text(elapsed.getMinutes() + 'm');
 
       // Schedule update in one second.
       function updateLater() {
@@ -22,7 +22,7 @@ angular.module('fivefifteenApp.directives', [])
           var current = new Date();
           var elapsed = new Date();
           elapsed.setTime(current.getTime() - init.getTime());
-          element.text('Minute/s elapsed: ' + elapsed.getMinutes());
+          element.text(elapsed.getMinutes() + 'm');
           updateLater(); // schedule another update
         }, 1000);
       }
