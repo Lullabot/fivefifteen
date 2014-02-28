@@ -12,6 +12,11 @@ AngularJs app to help with my weekly report.
 1. Install any bower components with `bower install`.
 1. Run the app with `grunt server`.
 
+### Troubleshooting
+
+- If you get an error with `SELF_SIGNED_CERT_IN_CHAIN`, try running the following command before re-trying the install: `npm config set strict-ssl false`
+- If you get permission errors, try running the commands as the administrative user with `sudo`.
+
 ## Contributing
 
 1. Make sure there is an issue for anything you are working on.
