@@ -9,7 +9,7 @@ angular.module('fivefifteenApp')
     // Simple Data service to persist form values.
     $scope.data = DataFactory.data;
     // Admin Contact
-    $scope.admin = "seth@lullabot.com";
+    $scope.admin = "";
     // Define variable for opening email.
     $scope.sendEmail = function() { sendMail($scope); };
     // An array of step objects in order.
