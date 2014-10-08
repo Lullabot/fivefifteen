@@ -1,6 +1,8 @@
 <div class="panel panel-info">
   <!-- Default panel contents -->
-  <div class="panel-heading"><strong>IMPORTANT: User action required.</strong></div>
+  <div class="panel-heading">
+    <strong>IMPORTANT: User action required.</strong><br/>
+  </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-7">
@@ -9,6 +11,9 @@
       <div class="col-sm-5">
         <button type="button" ng-click="sendEmail()" class="btn btn-lg btn-info">Launch email</button>
       </div>
+    </div>
+    <div class="alert alert-warning">
+      <strong>NOTE: Using a web based email client may result in a failed request due to the size of the url string that would be passed.</strong>
     </div>
   </div>
 </div>
