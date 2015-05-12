@@ -3,6 +3,8 @@ angular-local-storage
 
 An Angular module that gives you access to the browsers local storage
 
+[![Build Status](https://secure.travis-ci.org/grevory/angular-local-storage.png?branch=master)](https://travis-ci.org/grevory/)
+
 Example use: 
 
 ```javascript
@@ -23,7 +25,7 @@ available on the localStorageServiceProvider
 angular.module('yourModule', ['LocalStorageModule'])
 .config(['localStorageServiceProvider', function(localStorageServiceProvider){
   localStorageServiceProvider.setPrefix('newPrefix');
-});
+}]);
 ```
 Check out the full demo and documentation at http://gregpike.net/demos/angular-local-storage/demo.html
 
