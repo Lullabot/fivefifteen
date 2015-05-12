@@ -133,7 +133,7 @@ angular.module('fivefifteenApp')
   }])
 
 
-  .controller('HeaderCtrl', ['$scope', '$location', 'StepsFactory', 
+  .controller('HeaderCtrl', ['$scope', '$location', 'StepsFactory',
                     function ($scope,   $location,   StepsFactory) {
 
     // Site Tagline
@@ -255,6 +255,6 @@ function sendMail($scope) {
   var mailTo = $scope.admin;
   var subject = $scope.siteName;
   var body = encodeURIComponent($scope.getPreview());
-  
-  window.location.href = 'mailto:' + mailTo + '?subject=Report from ' + subject + '&body=' + body;
+
+  window.open('mailto:' + mailTo + '?subject=Report from ' + subject + '&body=' + body);
 }
