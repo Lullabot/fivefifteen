@@ -10,6 +10,7 @@ AngularJs app to help with my weekly report.
 1. Install yeoman and bower with `npm install -g yo bower`.
 1. Install any node dependencies with `npm install`.
 1. Install any bower components with `bower install`.
+1. Install compass for building Sass with `gem install compass`
 1. Run the app with `grunt server`.
 
 ### Troubleshooting
